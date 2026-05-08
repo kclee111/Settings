@@ -1,0 +1,64 @@
+/* Cursor Markdown Preview custom styles
+ * - Markdown Preview GitHub Styling 확장이 .markdown-body 에 16px 등을 강제하므로
+ *   같은 selector(.markdown-body)로 덮어쓴다. body 만 쓰면 specificity 부족으로 무시됨.
+ * - 함께 라이트 테마(흰 배경 + 어두운 글자) 강제도 유지.
+ */
+
+body,
+.markdown-body {
+    background-color: #ffffff !important;
+    color: #1f1f1f !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6,
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    color: #1f1f1f !important;
+}
+
+.markdown-body code,
+body code {
+    background-color: #f3f3f3 !important;
+    color: #1f1f1f !important;
+    font-size: 0.9em !important;
+}
+
+.markdown-body pre,
+body pre {
+    background-color: #f3f3f3 !important;
+}
+
+.markdown-body pre code {
+    font-size: 0.9em !important;
+}
+
+.markdown-body table {
+    font-size: 0.95em !important;
+}
+
+.markdown-body a,
+body a {
+    color: #0066cc !important;
+}
+
+.markdown-body strong,
+body strong {
+    color: #000 !important;
+}
+
+.markdown-body em,
+body em {
+    color: #1f1f1f !important;
+}
+
+.markdown-body blockquote,
+body blockquote {
+    background-color: #f9f9f9 !important;
+    border-left-color: #ddd !important;
+}
