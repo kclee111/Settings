@@ -1,8 +1,15 @@
 /* Cursor Markdown Preview custom styles
  * - Markdown Preview GitHub Styling 확장이 .markdown-body 에 16px 등을 강제하므로
  *   같은 selector(.markdown-body)로 덮어쓴다. body 만 쓰면 specificity 부족으로 무시됨.
- * - 라이트 테마(흰 배경 + 어두운 글자) 강제도 유지.
- * - Obsidian vault의 cursor-beige.css와 톤 동기화 — strong vivid blue, 인용구 강화, hr/표 헤더 등.
+ * - Source of truth: Obsidian vault 실제 렌더링 (theme: Things + snippet: cursor-beige).
+ *   본문/링크색/strong/blockquote색/callout 톤 = cursor-beige.css.
+ *   코드블록 색·헤딩 사이즈·h2 밑줄·링크 밑줄·blockquote 이탤릭 = Things 테마 기본값.
+ *   (snippet의 --pre-code-background는 Things가 --code-block-background-l을 쓰므로 무시됨.)
+ *   주요 색/사이즈:
+ *   - body bg #f7f2e3, text #1f1f1f, strong #0050ff/700, link #0066cc(underline)
+ *   - blockquote/callout #ede5cb + #b8a875 보더 (italic)
+ *   - pre bg #f0f2f5, pre border #ebedf0, inline code bg #eceef1
+ *   - h1 1.7rem / h2 1.5rem(밑줄 2px #ebedf0) / h3 1.2rem / h4 1.1rem / h5 1rem / h6 0.9rem
  */
 
 body,
@@ -15,7 +22,7 @@ body,
     font-weight: 540 !important;
 }
 
-/* 헤딩 — 본문과 동일 톤 (Obsidian과 일관성) */
+/* 헤딩 — 본문과 동일 톤 (cursor-beige) + Things 사이즈 sync */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
@@ -26,24 +33,45 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
     color: #1f1f1f !important;
 }
 
-/* 인라인 코드 (pre 외) */
+.markdown-body h1, body h1 { font-size: 1.7rem !important; }
+.markdown-body h2, body h2 { font-size: 1.5rem !important; }
+.markdown-body h3, body h3 { font-size: 1.2rem !important; }
+.markdown-body h4, body h4 { font-size: 1.1rem !important; }
+.markdown-body h5, body h5 { font-size: 1rem   !important; }
+.markdown-body h6, body h6 { font-size: 0.9rem !important; }
+
+/* h2 — Things 기본 underline (2px solid --background-modifier-border) */
+.markdown-body h2,
+body h2 {
+    border-bottom: 2px solid #ebedf0 !important;
+    padding-bottom: 2px !important;
+    margin-bottom: 8px !important;
+}
+
+/* 인라인 코드 (pre 외) — Things 테마의 --code-background-l과 동일 */
 .markdown-body :not(pre) > code,
 body :not(pre) > code {
-    background-color: #f1ead4 !important;
+    background-color: #eceef1 !important;
     color: #1f1f1f !important;
     font-size: 0.9em !important;
 }
 
-/* 코드 블록 — pre 배경, 안의 code는 투명 */
+/* 코드 블록 — Things 테마의 --code-block-background-l + --color-base-30 보더와 동일 */
 .markdown-body pre,
 body pre {
-    background-color: #f1ead4 !important;
+    background-color: #f0f2f5 !important;
+    color: #1f1f1f !important;
+    border: 1px solid #ebedf0 !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important;
 }
 
 .markdown-body pre code,
 body pre code {
     font-size: 0.9em !important;
     background: transparent !important;
+    color: inherit !important;
+    font-weight: 500 !important;
 }
 
 /* 표 */
@@ -57,10 +85,11 @@ body th {
     background-color: #ede5cb !important;
 }
 
-/* 링크 */
+/* 링크 — cursor-beige 색 + Things 기본 underline */
 .markdown-body a,
 body a {
     color: #0066cc !important;
+    text-decoration: underline !important;
 }
 
 /* 굵게(strong) — vivid blue (검정 #000에서 변경, Obsidian과 통일)
@@ -77,12 +106,13 @@ body em {
     color: #1f1f1f !important;
 }
 
-/* 인용구(blockquote) — 더 진한 베이지 + 4px 카키 보더 (Obsidian 동기화) */
+/* 인용구(blockquote) — cursor-beige 베이지/보더 + Things 기본 italic */
 .markdown-body blockquote,
 body blockquote {
     color: #1f1f1f !important;
     background-color: #ede5cb !important;
     border-left: 4px solid #b8a875 !important;
+    font-style: italic !important;
 }
 
 /* 인용구 안 strong / em / em+strong — vivid blue 통일 (본문 strong과 일관성) */
@@ -100,4 +130,35 @@ body blockquote em {
 .markdown-body hr,
 body hr {
     border-color: #dad3b8 !important;
+}
+
+/* Callout / Alert (`> [!NOTE]`, `> [!TIP]` 등) — vault callout과 톤 동기화
+ * GitHub-flavored alert는 .markdown-alert.markdown-alert-{note,tip,...}로 렌더됨 */
+.markdown-body .markdown-alert,
+body .markdown-alert {
+    background-color: #ede5cb !important;
+    color: #1f1f1f !important;
+    border-left: 4px solid #b8a875 !important;
+}
+
+.markdown-body .markdown-alert *,
+body .markdown-alert *,
+.markdown-body .markdown-alert .markdown-alert-title,
+body .markdown-alert .markdown-alert-title {
+    color: #1f1f1f !important;
+}
+
+.markdown-body .markdown-alert strong,
+.markdown-body .markdown-alert em,
+.markdown-body .markdown-alert em strong,
+.markdown-body .markdown-alert strong em,
+body .markdown-alert strong,
+body .markdown-alert em {
+    color: #0050ff !important;
+    font-weight: 700 !important;
+}
+
+.markdown-body .markdown-alert a,
+body .markdown-alert a {
+    color: #0066cc !important;
 }
