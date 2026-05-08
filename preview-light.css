@@ -6,10 +6,11 @@
 
 body,
 .markdown-body {
-    background-color: #ffffff !important;
+    background-color: #f7f2e3 !important;
     color: #1f1f1f !important;
-    font-size: 13px !important;
+    font-size: 15px !important;
     line-height: 1.6 !important;
+    font-weight: 500 !important;
 }
 
 .markdown-body h1,
@@ -24,14 +25,14 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 
 .markdown-body code,
 body code {
-    background-color: #f3f3f3 !important;
+    background-color: #f1ead4 !important;
     color: #1f1f1f !important;
     font-size: 0.9em !important;
 }
 
 .markdown-body pre,
 body pre {
-    background-color: #f3f3f3 !important;
+    background-color: #f1ead4 !important;
 }
 
 .markdown-body pre code {
@@ -50,6 +51,7 @@ body a {
 .markdown-body strong,
 body strong {
     color: #000 !important;
+    font-weight: 700 !important;
 }
 
 .markdown-body em,
@@ -59,6 +61,6 @@ body em {
 
 .markdown-body blockquote,
 body blockquote {
-    background-color: #f9f9f9 !important;
-    border-left-color: #ddd !important;
+    background-color: #f2ecd8 !important;
+    border-left-color: #dad3b8 !important;
 }
