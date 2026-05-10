@@ -1,10 +1,8 @@
-import os
-import sys
 import inspect
 from typing import Callable, Union
 from pathlib import Path
 import warnings
-from importlib import reload
+from IPython.core.display import HTML
 
 warnings.filterwarnings("ignore")
 
@@ -99,20 +97,6 @@ def attr(obj):
     )
 
 
-# insert row
-def insert_row(df: pd.DataFrame, row) -> pd.DataFrame:
-    df[len(df)] = row
-    return df.reset_index(drop=True)
-
-
-# import pymc as pm
-# import pymc.math as pmath
-# import pytensor.tensor as tt
-# import xarray as xr
-
-pmstack = lambda x: x.stack(sample=("chain", "draw")).transpose("sample", ...)
-
-
 def kv(obj):
     for k, v in obj.items():
         print(f"{k}:\n{v}")
@@ -147,3 +131,18 @@ def read_yaml(filename):
     with open(filename, "r") as f:
         args = yaml.load(f, Loader=loader)
     return args
+
+
+HTML(
+    r"""
+<style>
+    * {
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+    }
+    .output-plaintext, .output-stream, .output {
+        font-family: "Consolas" !important; # Any monospaced font should work
+    }
+</style>
+"""
+)
