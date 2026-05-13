@@ -2,7 +2,7 @@ import inspect
 from typing import Callable, Union
 from pathlib import Path
 import warnings
-from IPython.core.display import HTML
+from IPython.display import HTML, display
 
 warnings.filterwarnings("ignore")
 
@@ -133,8 +133,9 @@ def read_yaml(filename):
     return args
 
 
-HTML(
-    r"""
+display(
+    HTML(
+        r"""
 <style>
     * {
         font-size: 14px !important;
@@ -145,4 +146,5 @@ HTML(
     }
 </style>
 """
+    )
 )
