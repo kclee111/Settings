@@ -6,7 +6,7 @@
  *   코드블록 색·헤딩 사이즈·h2 밑줄·링크 밑줄·blockquote 이탤릭 = Things 테마 기본값.
  *   (snippet의 --pre-code-background는 Things가 --code-block-background-l을 쓰므로 무시됨.)
  *   주요 색/사이즈:
- *   - body bg #e0d8c4, text #1f1f1f, strong #0050ff/700, link #0066cc(underline)
+ *   - body bg #cdc190, text #1f1f1f, strong #0050ff/700, link #0066cc(underline)
  *   - blockquote/callout #cfc5a8 + #b8a875 보더 (italic)
  *   - pre bg #101827, pre border #334155, inline code bg #d7dce3
  *   - h1 1.7rem / h2 1.5rem(밑줄 2px #ebedf0) / h3 1.2rem / h4 1.1rem / h5 1rem / h6 0.9rem
@@ -14,7 +14,7 @@
 
 body,
 .markdown-body {
-    background-color: #e0d8c4 !important;
+    background-color: #cdc190 !important;
     color: #1f1f1f !important;
     font-family: 'D2CodingLigature Nerd Font', 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif !important;
     font-size: 16px !important;
