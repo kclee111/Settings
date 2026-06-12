@@ -1,0 +1,266 @@
+/* Cursor/VS Code Markdown Preview custom styles — DARK
+ * - 미리보기 <body>는 테마에 따라 vscode-light / vscode-dark 클래스를 받는다.
+ *   이 파일은 모두 `body.vscode-dark` / `.vscode-dark .markdown-body`로 스코프해
+ *   다크 테마에서만 적용된다(라이트는 preview-light.css). 두 파일 모두 markdown.styles에 등록.
+ * - Source of truth: 이 프로젝트(mdviewer) 앱의 다크 본문 디자인
+ *   (frontend/src/app.css :root[data-theme="dark"] + frontend/src/preview-dark.css).
+ *   주요 토큰:
+ *   - body bg #0d1117, text #c9d1d9, headings #f0f6fc, font-weight 400
+ *   - link #58a6ff(밑줄)/visited #bc8cff, strong 골드 #e3b341/700
+ *   - blockquote/alert #161b22 + 골드 보더 #d4a72c (italic)
+ *   - pre #0b0f15 / #e6edf3 / border #30363d, inline code #1c232d + border #2d343e
+ *   - h1 2rem / h2 1.5rem(밑줄 1px #252b33) / h3 1.2 / h4 1.1 / h5 1 / h6 0.9rem
+ *   코드블록 syntax 토큰은 에디터 highlight.js(.hljs) 기준(다크 위 고대비).
+ */
+
+body.vscode-dark,
+.vscode-dark .markdown-body {
+    background-color: #0d1117 !important;
+    color: #c9d1d9 !important;
+    font-family: 'D2CodingLigature Nerd Font', 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    font-weight: 400 !important;
+}
+
+/* 헤딩 — 밝은 톤 + 앱과 동일 사이즈 스케일 */
+.vscode-dark .markdown-body h1,
+.vscode-dark .markdown-body h2,
+.vscode-dark .markdown-body h3,
+.vscode-dark .markdown-body h4,
+.vscode-dark .markdown-body h5,
+.vscode-dark .markdown-body h6,
+body.vscode-dark h1, body.vscode-dark h2, body.vscode-dark h3,
+body.vscode-dark h4, body.vscode-dark h5, body.vscode-dark h6 {
+    color: #f0f6fc !important;
+}
+
+.vscode-dark .markdown-body h1, body.vscode-dark h1 { font-size: 2rem   !important; font-weight: 680 !important; }
+.vscode-dark .markdown-body h2, body.vscode-dark h2 { font-size: 1.5rem !important; }
+.vscode-dark .markdown-body h3, body.vscode-dark h3 { font-size: 1.2rem !important; }
+.vscode-dark .markdown-body h4, body.vscode-dark h4 { font-size: 1.1rem !important; }
+.vscode-dark .markdown-body h5, body.vscode-dark h5 { font-size: 1rem   !important; }
+.vscode-dark .markdown-body h6, body.vscode-dark h6 { font-size: 0.9rem !important; }
+
+/* h2 — 어두운 hairline 밑줄 */
+.vscode-dark .markdown-body h2,
+body.vscode-dark h2 {
+    border-bottom: 1px solid #252b33 !important;
+    padding-bottom: 2px !important;
+    margin-bottom: 8px !important;
+}
+
+/* 인라인 코드 */
+.vscode-dark .markdown-body :not(pre) > code,
+body.vscode-dark :not(pre) > code {
+    background-color: #1c232d !important;
+    color: #e6edf3 !important;
+    border: 1px solid #2d343e !important;
+    font-family: 'D2CodingLigature Nerd Font', 'Cascadia Mono', Consolas, monospace !important;
+    font-size: 0.9em !important;
+    font-weight: 600 !important;
+}
+
+/* 코드 블록 — 근-블랙 슬레이트 */
+.vscode-dark .markdown-body pre,
+body.vscode-dark pre {
+    background-color: #0b0f15 !important;
+    color: #e6edf3 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 6px !important;
+    padding: 12px 14px !important;
+    font-family: 'D2CodingLigature Nerd Font', 'Cascadia Mono', Consolas, monospace !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+}
+
+.vscode-dark .markdown-body pre code,
+body.vscode-dark pre code {
+    font-size: 1em !important;
+    background: transparent !important;
+    color: inherit !important;
+    font-weight: 600 !important;
+}
+
+/* 코드 블록 syntax highlight — 다크 위 고대비 토큰색 */
+.vscode-dark .markdown-body pre .hljs,
+body.vscode-dark pre .hljs {
+    color: #e6edf3 !important;
+    background: transparent !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-keyword,
+.vscode-dark .markdown-body pre .hljs-selector-tag,
+.vscode-dark .markdown-body pre .hljs-built_in,
+.vscode-dark .markdown-body pre .hljs-name,
+.vscode-dark .markdown-body pre .token.keyword,
+.vscode-dark .markdown-body pre .token.selector,
+.vscode-dark .markdown-body pre .token.builtin,
+body.vscode-dark pre .hljs-keyword,
+body.vscode-dark pre .hljs-selector-tag,
+body.vscode-dark pre .hljs-built_in,
+body.vscode-dark pre .hljs-name,
+body.vscode-dark pre .token.keyword,
+body.vscode-dark pre .token.selector,
+body.vscode-dark pre .token.builtin {
+    color: #e3b341 !important;
+    font-weight: 700 !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-string,
+.vscode-dark .markdown-body pre .hljs-attr,
+.vscode-dark .markdown-body pre .hljs-symbol,
+.vscode-dark .markdown-body pre .token.string,
+.vscode-dark .markdown-body pre .token.attr-value,
+body.vscode-dark pre .hljs-string,
+body.vscode-dark pre .hljs-attr,
+body.vscode-dark pre .hljs-symbol,
+body.vscode-dark pre .token.string,
+body.vscode-dark pre .token.attr-value {
+    color: #9ece6a !important;
+    font-weight: 600 !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-number,
+.vscode-dark .markdown-body pre .hljs-literal,
+.vscode-dark .markdown-body pre .token.number,
+.vscode-dark .markdown-body pre .token.boolean,
+body.vscode-dark pre .hljs-number,
+body.vscode-dark pre .hljs-literal,
+body.vscode-dark pre .token.number,
+body.vscode-dark pre .token.boolean {
+    color: #ff9e64 !important;
+    font-weight: 600 !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-comment,
+.vscode-dark .markdown-body pre .token.comment,
+.vscode-dark .markdown-body pre .token.prolog,
+body.vscode-dark pre .hljs-comment,
+body.vscode-dark pre .token.comment,
+body.vscode-dark pre .token.prolog {
+    color: #6e7681 !important;
+    font-weight: 500 !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-title,
+.vscode-dark .markdown-body pre .hljs-function,
+.vscode-dark .markdown-body pre .hljs-variable,
+.vscode-dark .markdown-body pre .token.function,
+.vscode-dark .markdown-body pre .token.variable,
+body.vscode-dark pre .hljs-title,
+body.vscode-dark pre .hljs-function,
+body.vscode-dark pre .hljs-variable,
+body.vscode-dark pre .token.function,
+body.vscode-dark pre .token.variable {
+    color: #7dcfff !important;
+    font-weight: 700 !important;
+}
+
+.vscode-dark .markdown-body pre .hljs-operator,
+.vscode-dark .markdown-body pre .hljs-punctuation,
+.vscode-dark .markdown-body pre .token.operator,
+.vscode-dark .markdown-body pre .token.punctuation,
+body.vscode-dark pre .hljs-operator,
+body.vscode-dark pre .hljs-punctuation,
+body.vscode-dark pre .token.operator,
+body.vscode-dark pre .token.punctuation {
+    color: #c9d1d9 !important;
+    font-weight: 600 !important;
+}
+
+/* 표 */
+.vscode-dark .markdown-body table {
+    font-size: 0.95em !important;
+}
+
+.vscode-dark .markdown-body th,
+body.vscode-dark th {
+    background-color: #1c232d !important;
+    color: #f0f6fc !important;
+}
+
+.vscode-dark .markdown-body td,
+.vscode-dark .markdown-body th,
+body.vscode-dark td,
+body.vscode-dark th {
+    border-color: #30363d !important;
+}
+
+/* 링크 — 블루 + 밑줄, 방문 링크 구분 */
+.vscode-dark .markdown-body a,
+body.vscode-dark a {
+    color: #58a6ff !important;
+    text-decoration: underline !important;
+}
+
+.vscode-dark .markdown-body a:visited,
+body.vscode-dark a:visited {
+    color: #bc8cff !important;
+}
+
+/* 굵게(strong) — 골드 */
+.vscode-dark .markdown-body strong,
+body.vscode-dark strong {
+    color: #e3b341 !important;
+    font-weight: 700 !important;
+}
+
+/* 이탤릭(em) — 본문 톤 유지 */
+.vscode-dark .markdown-body em,
+body.vscode-dark em {
+    color: #c9d1d9 !important;
+}
+
+/* 인용구(blockquote) — 다크 패널 + 골드 보더 + italic */
+.vscode-dark .markdown-body blockquote,
+body.vscode-dark blockquote {
+    color: #adbac7 !important;
+    background-color: #161b22 !important;
+    border-left: 4px solid #d4a72c !important;
+    font-style: italic !important;
+}
+
+.vscode-dark .markdown-body blockquote strong,
+.vscode-dark .markdown-body blockquote em,
+.vscode-dark .markdown-body blockquote em strong,
+.vscode-dark .markdown-body blockquote strong em,
+body.vscode-dark blockquote strong,
+body.vscode-dark blockquote em {
+    color: #e3b341 !important;
+    font-weight: 700 !important;
+}
+
+/* 구분선(hr) */
+.vscode-dark .markdown-body hr,
+body.vscode-dark hr {
+    border-color: #30363d !important;
+}
+
+/* Callout / Alert — 다크 패널 + 골드 보더 */
+.vscode-dark .markdown-body .markdown-alert,
+body.vscode-dark .markdown-alert {
+    background-color: #161b22 !important;
+    color: #c9d1d9 !important;
+    border-left: 4px solid #d4a72c !important;
+}
+
+.vscode-dark .markdown-body .markdown-alert *,
+body.vscode-dark .markdown-alert *,
+.vscode-dark .markdown-body .markdown-alert .markdown-alert-title,
+body.vscode-dark .markdown-alert .markdown-alert-title {
+    color: #c9d1d9 !important;
+}
+
+.vscode-dark .markdown-body .markdown-alert strong,
+.vscode-dark .markdown-body .markdown-alert em,
+.vscode-dark .markdown-body .markdown-alert em strong,
+.vscode-dark .markdown-body .markdown-alert strong em,
+body.vscode-dark .markdown-alert strong,
+body.vscode-dark .markdown-alert em {
+    color: #e3b341 !important;
+}
+
+.vscode-dark .markdown-body .markdown-alert a,
+body.vscode-dark .markdown-alert a {
+    color: #58a6ff !important;
+}
